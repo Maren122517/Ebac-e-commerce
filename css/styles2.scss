@@ -1,0 +1,272 @@
+//Variables
+$body-font: "lexend", Arial, Helvetica, sans-serif;
+$header-bg-color: #ce6824;
+$banner-bg-image: url(../img/banner.jpeg);
+$product-min-width: 250px;
+$cart-width: 500px;
+$cart-top: 100px;
+$medium-screen: 820px;
+$small-screen: 480px;
+$color-white: #fff;
+
+@mixin flexbox {
+    display: flex;
+    justify-content: space-between;
+}
+
+%button {
+    display: block;
+    border: none;
+    border-radius: 20px;
+    width: 98%;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+// Global
+body {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 300;
+  color: #1d1d1d;
+  font-family: $body-font;
+  margin: 0;
+}
+
+// Header 
+header {
+
+    width: 100%;
+    padding: 20px 50px;
+    background-color: $header-bg-color;
+    @include flexbox;
+    align-items: center;
+    box-sizing: border-box;
+
+    &.__logo {
+        width: 100px;
+    }
+
+    &.__menu {
+        display: flex;
+        gap: 50px;
+    }
+
+    i {
+        width: 35px;
+        cursor: pointer;
+        display: inline-block;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &.__nav {
+        @include flexbox;
+        gap: 20px;
+        align-items: center;
+    }
+
+    &.__link {
+        font-size: .9rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}
+
+// Banner
+.banner {
+    width: 100%;
+    padding: 60px 0;
+    text-align: center;
+    background-image: $banner-bg-image;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: $color-white;
+    background-position-y: 60%;
+
+    h2 {
+        width: 100%;
+        font-weight: 600;
+        font-size: 30px;
+        margin: 10px;
+    }
+
+    p {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 25px;
+        opacity: 0.7;
+    }
+}
+
+// Product
+.products {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($product-min-width, 1fr));
+}
+
+.products article {
+    cursor: pointer;
+    text-align: center;
+
+    img {
+        width: 200px;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-weight: 500;
+        font-size: 17px;
+        margin-bottom: 5px;
+    }
+
+    p {
+        font-weight: 300;
+        font-size: 15px;
+    }
+}
+
+.products__btn {
+    @extend %button;
+    background-color: #333;
+    color: $color-white;
+    
+
+    &--disabled {
+        background-color: #a19f9f;
+    }
+}
+
+// Cart
+.cart {
+    width: $cart-width;
+    background-color: $color-white;
+    padding: 25px;
+    box-sizing: border-box;
+    height: 100%;
+    position: fixed;
+    right: -100%;
+    top: $cart-top;
+    box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.30);
+
+    h2 {
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 25px 0;
+        box-sizing: border-box;
+    }
+
+    div {
+        border-bottom: 1px solid #333;
+        @include flexbox;
+        align-items: center;
+        padding: 15px;
+        box-sizing: border-box;
+
+        img {
+            width: 60px;
+        }
+
+        p:nth-child(3) {
+            font-weight: 500;
+        }
+
+        i {
+            width: 25px;
+            cursor: pointer;
+        }
+
+        .delete-icon {
+            width: 100%;
+        }
+    }
+}
+
+// Media
+@media (max-width: $medium-screen) {
+    header {
+        padding: 15px;
+
+        img {
+            width: 60px;
+        }
+
+        i {
+            width: 30px;
+        }
+    }
+
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .products img {
+        width: 150px;
+    }
+
+    .cart {
+        width: 400px;
+        top: 80px;
+    }
+}
+
+@media (max-width: $small-screen) {
+    .banner {
+        padding: 30px 0;
+
+        h2 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        padding: 10px;
+
+        img {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 10px;
+        }
+
+        h3,
+        p {
+            padding: 0 10px;
+        }
+    }
+
+    .cart {
+        width: 100%;
+        box-shadow: none;
+
+        h2 {
+            padding: 15px 0;
+        }
+
+        div {
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                width: 100px;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
