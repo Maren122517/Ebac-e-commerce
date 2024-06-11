@@ -1,13 +1,13 @@
 //Variables
 $body-font: "lexend", Arial, Helvetica, sans-serif;
-$header-bg-color: #ce6824;
+$header-bg-color: #035cd1;
 $banner-bg-image: url(../img/banner.jpeg);
 $product-min-width: 250px;
 $cart-width: 500px;
 $cart-top: 100px;
 $medium-screen: 820px;
 $small-screen: 480px;
-$color-white: #fff;
+$color-white: #d3d1d1;
 
 @mixin flexbox {
     display: flex;
